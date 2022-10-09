@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "09e9f95a-09b5-4962-b4e0-081ffe4f415c",
+		"name": "apijango",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddLivro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Code\" : \"1\",\r\n    \"Name\" : \"1984\",\r\n    \"author\" : \"George Orwell\",\r\n    \"genre\" : \"fiction\",\r\n    \"publisher\" : \"abc\",\r\n    \"year\" : 2021\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3001/savebook",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"savebook"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddAlugar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Code\" : \"1\",\r\n    \"clientCode\" : \"1\",\r\n    \"bookCode\" : \"1\",\r\n    \"date\" : \"17/09/2022\",\r\n    \"returnDate\" : \"27/09/2022\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3001/saverent",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"saverent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLivro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3001/getbook/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"getbook",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddCliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userName\" : \"Carlos\",\r\n    \"Code\" : \"1\",\r\n    \"gender\" : \"male\",\r\n    \"bornDate\" : \"2001\",\r\n    \"cpf\" : \"19292389283\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3001/saveuser",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"saveuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3001/getuser/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"getuser",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAlugar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:3001/getrent/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"getrent",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
