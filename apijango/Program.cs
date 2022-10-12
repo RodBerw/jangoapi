@@ -17,6 +17,11 @@ app.MapGet("/getbook/{code}", ([FromRoute] string code) => { //VISUALIZAR(OU OBT
     return book;
 });
 
+app.MapGet("/getbook/{code}", () => { //VISUALIZAR(OU OBTER) O PRODUTO SALVO.
+    var book = BookRepository.Books;
+    return book;
+});
+
 app.MapPut("/editbook", (Book book) => { //EDITAR PRODUTO.
     var bookSaved = BookRepository.GetBy(book.Code);
     bookSaved.Name = book.Name;
@@ -42,6 +47,11 @@ app.MapGet("/getuser/{code}", ([FromRoute] string code) => { //VISUALIZAR(OU OBT
     return user;
 });
 
+app.MapGet("/getuser", () => { //VISUALIZAR(OU OBTER) O USER SALVO.
+    var user = UserRepository.Clients;
+    return user;
+});
+
 app.MapPut("/edituser", (Client client) => { //EDITAR USER.
     var userSaved = UserRepository.GetBy(client.Code);
     userSaved.userName = client.userName;
@@ -58,16 +68,21 @@ app.MapDelete("/deleteuser/{code}", ([FromRoute] string code) => { //DELETAR USE
 ////////////////////////////////////////////////////////
 
 
-app.MapPost("/saverent", (Rent rent) => { //SALVAR O USER.
+app.MapPost("/saverent", (Rent rent) => { //SALVAR O RENT.
     RentRepository.Add(rent);
 });
 
-app.MapGet("/getrent/{code}", ([FromRoute] string code) => { //VISUALIZAR(OU OBTER) O USER SALVO.
+app.MapGet("/getrent/{code}", ([FromRoute] string code) => { //VISUALIZAR(OU OBTER) O RENT SALVO.
     var rent = RentRepository.GetBy(code);
     return rent;
 });
 
-app.MapPut("/editrent", (Rent rent) => { //EDITAR USER.
+app.MapGet("/getrent", () => { //VISUALIZAR(OU OBTER) O RENT SALVO.
+    var rent = RentRepository.Rents;
+    return rent;
+});
+
+app.MapPut("/editrent", (Rent rent) => { //EDITAR RENT.
     var rentSaved = RentRepository.GetBy(rent.Code);
     rentSaved.clientCode = rent.clientCode;
     rentSaved.bookCode = rent.bookCode;
@@ -75,11 +90,12 @@ app.MapPut("/editrent", (Rent rent) => { //EDITAR USER.
     rentSaved.returnDate = rent.returnDate;
 });
 
-app.MapDelete("/deletrent/{code}", ([FromRoute] string code) => { //DELETAR USER.
+app.MapDelete("/deletrent/{code}", ([FromRoute] string code) => { //DELETAR RENT.
     var rentSaved = RentRepository.GetBy(code);
     RentRepository.Remove(rentSaved);
 });
 app.Run();
+
 
 
 public static class BookRepository //FONTE DE DADOS
@@ -98,6 +114,7 @@ public static class BookRepository //FONTE DE DADOS
     {
         return Books.FirstOrDefault(p => p.Code == code); 
     }
+    
 
     public static void Remove(Book book)
     {
@@ -116,6 +133,13 @@ public static class RentRepository //FONTE DE DADOS
         if(Rents == null)
             Rents =  new List<Rent>();
 
+        foreach (var rent_t in Rents)
+        {
+            if(rent_t.bookCode == rent.bookCode){
+                Console.WriteLine("Esse livro já foi emprestado a outro cliente, favor escolher outro livro.");
+                return;
+            }
+        }
         Rents.Add(rent);
     }
 
