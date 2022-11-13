@@ -1,0 +1,44 @@
+#main {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 50px 10% 0 10%;
+}
+
+p {
+  font-size: 2rem;
+}
+
+.grid-item {
+  text-align: center;
+  margin: 10px;
+  padding: 20px;
+  background-color: rgb(235, 233, 221);
+  border-radius: 10px;
+  height: 750px;
+}
+
+input {
+  width: 80%;
+  height: 50px;
+  border-radius: 10px;
+  padding: 5px 10px 5px 10px;
+  font-size: 1rem;
+  border: solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  margin-top: 30px;
+}
+
+#register {
+}
+
+#list {
+}
+
+.button {
+  background-color: rgb(243, 243, 243);
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+}
